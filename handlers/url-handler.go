@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"database/sql"
+	"log"
 	"net/http"
 	"url-shortener/config"
 	"url-shortener/utils"
@@ -53,6 +54,7 @@ func ShortenURL(c *gin.Context) {
 	)
 
 	if err != nil {
+		log.Printf("SQL EXEC ERROR: %v", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to save URL"})
 		return
 	}
