@@ -48,7 +48,7 @@ func ShortenURL(c *gin.Context) {
 	
 
 	_, err := config.DB.Exec(
-		"INSERT INTO urls ( original_url, short_code) VALUES ($1,$2,$3)",
+		"INSERT INTO urls ( original_url, short_code) VALUES ($1,$2)",
 		 body.URL, shortCode,
 	)
 
