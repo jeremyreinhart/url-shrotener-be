@@ -7,7 +7,6 @@ import (
 	"url-shortener/utils"
 
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 	"github.com/skip2/go-qrcode"
 )
 
@@ -46,11 +45,11 @@ func ShortenURL(c *gin.Context) {
 		}
 	}
 
-	id := uuid.New()
+	
 
 	_, err := config.DB.Exec(
-		"INSERT INTO urls (id, original_url, short_code) VALUES ($1,$2,$3)",
-		id, body.URL, shortCode,
+		"INSERT INTO urls ( original_url, short_code) VALUES ($1,$2,$3)",
+		 body.URL, shortCode,
 	)
 
 	if err != nil {
